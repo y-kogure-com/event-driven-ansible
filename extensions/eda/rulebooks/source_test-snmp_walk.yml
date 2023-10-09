@@ -1,0 +1,14 @@
+---
+- name: snmp_walk event source example
+  hosts: all
+
+  sources:
+    - y_kogure_com0.eda.snmp_walk:
+        host: '192.168.125.113'
+        mib: 'interfaces'
+
+  rules:
+    - name: Print file action
+      condition: 1 == 1
+      action:
+        print_event:

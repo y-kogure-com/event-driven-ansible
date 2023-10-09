@@ -1,0 +1,17 @@
+---
+- name: ping event source example
+  hosts: all
+
+  sources:
+    - y_kogure_com0.eda.ping:
+        hosts:
+          - '1.1.1.1'
+          - '127.0.0.1'
+          - 'google.com'
+          - '::1'
+
+  rules:
+    - name: Print file action
+      condition: 1 == 1
+      action:
+        print_event:

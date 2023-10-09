@@ -1,0 +1,21 @@
+---
+- name: ntc_templates event filter example
+  hosts: all
+
+  sources:
+    - ansible.eda.kafka:
+        host: "localhost"
+        port: 9092
+        topic: "test-events"
+      filters:
+        - y_kogure_com0.eda.ntc_templates:
+            message: '{{ event.body.message }}'
+            platform: 'cisco_ios'
+            command: 'show logging'
+
+
+  rules:
+    - name: Print event resource
+      condition: 1 == 1
+      action:
+        print_event:

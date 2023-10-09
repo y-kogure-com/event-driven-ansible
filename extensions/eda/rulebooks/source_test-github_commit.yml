@@ -1,0 +1,14 @@
+---
+- name: github_commit event source example
+  hosts: all
+
+  sources:
+    - y_kogure_com0.eda.eda_github:
+        repository: '<Repository Name>'
+        token: '<GITHUB API TOKEN>'
+
+  rules:
+    - name: Print file action
+      condition: 1 == 1
+      action:
+        print_event:

@@ -1,0 +1,22 @@
+---
+- name: network_command event source example
+  hosts: all
+
+  sources:
+    - y_kogure_com0.eda.network_command:
+        host: '10.0.0.254'
+        device_type: 'cisco_ios'
+        username: 'cisco'
+        key_file: '~/.ssh/id_rsa'
+        command: 'show version'
+      filters:
+        - y_kogure_com0.eda.ntc_templates:
+            message: '{{ event.body }}'
+            platform: 'cisco_ios'
+            command: 'show version'
+
+  rules:
+    - name: Print file action
+      condition: 1 == 1
+      action:
+        print_event:
